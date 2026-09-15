@@ -6,6 +6,7 @@ REST API сервис для автосервиса, по управлению �
 Технологический стек
 - Язык: Java 17
 - фреймворки: Spring Boot 3 (Web, Async)
+- Архитектура: Maven
 - База данных: PostgreSQL 15, Spring Data JPA, Hibernate
 - Асинхронные события: Apache Kafka, Zookeeper
 - Кэширование: Redis 7
