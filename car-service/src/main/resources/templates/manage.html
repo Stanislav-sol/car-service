@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление автопарком — Dark Autumn Garage</title>
+    <link rel="stylesheet" th:href="@{/css/manage.css}">
+</head>
+<body>
+
+<div class="light-source"></div>
+
+<div class="sphere sphere-1"></div>
+<div class="sphere sphere-2"></div>
+<div class="sphere sphere-3"></div>
+
+<div class="leaves-container">
+    <div class="leaf leaf-1"></div>
+    <div class="leaf leaf-2"></div>
+    <div class="leaf leaf-3"></div>
+    <div class="leaf leaf-4"></div>
+    <div class="leaf leaf-5"></div>
+    <div class="leaf leaf-6"></div>
+    <div class="leaf leaf-7"></div>
+    <div class="leaf leaf-8"></div>
+    <div class="leaf leaf-9"></div>
+    <div class="leaf leaf-10"></div>
+    <div class="leaf leaf-11"></div>
+    <div class="leaf leaf-12"></div>
+    <div class="leaf leaf-13"></div>
+    <div class="leaf leaf-14"></div>
+    <div class="leaf leaf-15"></div>
+    <div class="leaf leaf-16"></div>
+    <div class="leaf leaf-17"></div>
+    <div class="leaf leaf-18"></div>
+    <div class="leaf leaf-19"></div>
+    <div class="leaf leaf-20"></div>
+    <div class="leaf leaf-21"></div>
+    <div class="leaf leaf-22"></div>
+</div>
+
+<svg class="bg-lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <line x1="-100" y1="0" x2="1600" y2="900" stroke="url(#diagGrad1)" stroke-width="1.8" opacity="0.35"/>
+    <line x1="-100" y1="250" x2="1300" y2="1000" stroke="url(#diagGrad1)" stroke-width="1.2" opacity="0.25"/>
+    <line x1="300" y1="-100" x2="1700" y2="800" stroke="url(#diagGrad2)" stroke-width="2.2" opacity="0.3"/>
+    <line x1="-200" y1="450" x2="1100" y2="1100" stroke="url(#diagGrad2)" stroke-width="1.5" opacity="0.2"/>
+    <line x1="600" y1="-200" x2="1800" y2="650" stroke="url(#diagGrad1)" stroke-width="2" opacity="0.35"/>
+    <line x1="-100" y1="700" x2="900" y2="1200" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.18"/>
+    <path d="M-100,100 Q700,400 1600,800" fill="none" stroke="url(#diagGrad1)" stroke-width="1.5" opacity="0.25"/>
+    <path d="M200,-100 Q900,500 1700,1000" fill="none" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.2"/>
+
+    <defs>
+        <linearGradient id="diagGrad1" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fb923c" />
+            <stop offset="50%" stop-color="#c25927" />
+            <stop offset="100%" stop-color="#3d1e18" />
+        </linearGradient>
+        <linearGradient id="diagGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="60%" stop-color="#7c1d1d" />
+            <stop offset="100%" stop-color="#0b0a09" />
+        </linearGradient>
+    </defs>
+</svg>
+
+<div class="container">
+
+    <header class="header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; text-align: left; margin-bottom: 35px;">
+        <div>
+            <h1 class="autumn-title">
+                <span class="title-dark">GARAGE</span>
+                <span class="title-autumn">MANAGEMENT</span>
+            </h1>
+            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.95rem;">
+                Добавление автомобилей и запись на сервисное обслуживание
+            </p>
+        </div>
+
+        <a href="/dark-garage" class="btn btn-primary" style="box-shadow: 0 0 20px rgba(194, 89, 39, 0.4);">
+            <span>Вернуться в гараж</span>
+        </a>
+    </header>
+
+    <div id="statusMessage"></div>
+
+    <section class="manage-card">
+        <h2 id="formTitle" class="card-subtitle">Добавить новый автомобиль</h2>
+
+        <form id="carForm" class="manage-form">
+            <input type="hidden" id="carId" />
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label" for="brand">Марка авто</label>
+                    <input type="text" id="brand" class="search-input" placeholder="Например: Peugeot, Changan..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="model">Модель</label>
+                    <input type="text" id="model" class="search-input" placeholder="Например: 508, UNI-V..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="year">Год выпуска</label>
+                    <input type="number" id="year" class="search-input" placeholder="2023" min="1990" max="2026" required>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label class="form-label" for="designStyle">Описание стилистики / дизайна</label>
+                <textarea id="designStyle" class="search-input" rows="3" placeholder="Опишите силуэт, оптику или особенности кузова..."></textarea>
+            </div>
+
+            <div class="form-actions" style="margin-top: 22px; display: flex; gap: 12px;">
+                <button type="submit" id="saveBtn" class="btn btn-primary">Добавить в автопарк</button>
+                <button type="button" id="cancelBtn" class="btn btn-reset" style="display: none;">Отмена</button>
+            </div>
+        </form>
+    </section>
+
+    <section style="margin-top: 45px;">
+        <h2 class="section-heading">Автомобили в гараже</h2>
+
+        <div id="carsAdminGrid" class="manage-grid">
+            <div class="loading-state" style="color: var(--text-muted); font-size: 0.95rem;">
+                Загрузка автопарка...
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Модальное окно создания сервисной записи -->
+<div id="serviceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); z-index: 2000; align-items: center; justify-content: center;">
+    <div class="manage-card" style="width: 100%; max-width: 500px; margin: 20px;">
+        <h2 class="card-subtitle">Добавить сервис к авто</h2>
+        <form id="serviceForm">
+            <input type="hidden" id="serviceCarId">
+
+            <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" for="serviceName">Название услуги</label>
+                <input type="text" id="serviceName" class="search-input" placeholder="Замена масла, диагностика..." required>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" for="executionTime">Время выполнения (мин)</label>
+                <input type="number" id="executionTime" class="search-input" placeholder="45" required>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" for="servicePrice">Стоимость (руб)</label>
+                <input type="number" id="servicePrice" class="search-input" placeholder="3500" required>
+            </div>
+
+            <div class="form-actions" style="margin-top: 20px; display: flex; gap: 10px;">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="button" onclick="closeServiceModal()" class="btn btn-reset">Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/manage.js}"></script>
+
+</body>
+</html>

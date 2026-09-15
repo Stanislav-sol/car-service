@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://prod-db-server:5432/car_service_prod
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST:prod-redis-server}
+      port: 6379
+
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:prod-kafka-server:9092}
+
+server:
+  port: 8081
+
+garage:
+  title: "Gothic Premium Garage"
+  max-capacity: 100
+  status: "круглосуточно"
+
+logging:
+  level:
+    root: WARN
+    com.mycar.car_service: INFO

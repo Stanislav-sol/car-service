@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: car-service
+  profiles:
+    active: dev
+
+jwt:
+  secret: "Sigma creeper along with sigma piggy were walking through the field"
+  expiration: 86400000

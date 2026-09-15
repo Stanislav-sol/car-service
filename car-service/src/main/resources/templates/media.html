@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Garage — Media Stream</title>
+  <link rel="stylesheet" th:href="@{/css/media.css}">
+</head>
+<body>
+
+<!-- Диагональный источник света (с нижнего левого угла) -->
+<div class="light-source"></div>
+
+<!-- 3D Декоративные сферы с уникальными позициями -->
+<div class="sphere sphere-1"></div>
+<div class="sphere sphere-2"></div>
+<div class="sphere sphere-3"></div>
+
+<!-- Непрерывный листопад (22 фигуры) -->
+<div class="leaves-container">
+  <div class="leaf leaf-1"></div>
+  <div class="leaf leaf-2"></div>
+  <div class="leaf leaf-3"></div>
+  <div class="leaf leaf-4"></div>
+  <div class="leaf leaf-5"></div>
+  <div class="leaf leaf-6"></div>
+  <div class="leaf leaf-7"></div>
+  <div class="leaf leaf-8"></div>
+  <div class="leaf leaf-9"></div>
+  <div class="leaf leaf-10"></div>
+  <div class="leaf leaf-11"></div>
+  <div class="leaf leaf-12"></div>
+  <div class="leaf leaf-13"></div>
+  <div class="leaf leaf-14"></div>
+  <div class="leaf leaf-15"></div>
+  <div class="leaf leaf-16"></div>
+  <div class="leaf leaf-17"></div>
+  <div class="leaf leaf-18"></div>
+  <div class="leaf leaf-19"></div>
+  <div class="leaf leaf-20"></div>
+  <div class="leaf leaf-21"></div>
+  <div class="leaf leaf-22"></div>
+</div>
+
+<!-- Сохраненные диагональные линии -->
+<svg class="bg-lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+  <line x1="-100" y1="0" x2="1600" y2="900" stroke="url(#diagGrad1)" stroke-width="1.8" opacity="0.35"/>
+  <line x1="-100" y1="250" x2="1300" y2="1000" stroke="url(#diagGrad1)" stroke-width="1.2" opacity="0.25"/>
+  <line x1="300" y1="-100" x2="1700" y2="800" stroke="url(#diagGrad2)" stroke-width="2.2" opacity="0.3"/>
+  <line x1="-200" y1="450" x2="1100" y2="1100" stroke="url(#diagGrad2)" stroke-width="1.5" opacity="0.2"/>
+  <line x1="600" y1="-200" x2="1800" y2="650" stroke="url(#diagGrad1)" stroke-width="2" opacity="0.35"/>
+  <line x1="-100" y1="700" x2="900" y2="1200" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.18"/>
+  <path d="M-100,100 Q700,400 1600,800" fill="none" stroke="url(#diagGrad1)" stroke-width="1.5" opacity="0.25"/>
+  <path d="M200,-100 Q900,500 1700,1000" fill="none" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.2"/>
+
+  <defs>
+    <linearGradient id="diagGrad1" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="50%" stop-color="#c25927" />
+      <stop offset="100%" stop-color="#3d1e18" />
+    </linearGradient>
+    <linearGradient id="diagGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="60%" stop-color="#7c1d1d" />
+      <stop offset="100%" stop-color="#0b0a09" />
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="container">
+
+  <header class="header">
+    <h1 class="autumn-title">
+      <span class="title-dark">Dark</span>
+      <span class="title-autumn">Media</span>
+      <span class="title-garage">Stream</span>
+    </h1>
+    <div style="margin-top: 15px;">
+      <a th:href="@{/dark-garage}" class="btn btn-reset">
+        <span>Назад в гараж</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="media-layout">
+
+    <!-- СЕКЦИЯ 1: Видео-панорама -->
+    <section class="media-section">
+      <h2 class="section-title">Видео-панорама</h2>
+      <div class="split-media-container">
+        <div class="split-item" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <video autoplay loop muted playsinline class="split-media">
+            <source th:src="@{/media/files/video/Artwork_Middle.mp4}" type="video/mp4">
+          </video>
+          <a th:href="@{/media/files/video/Artwork_Middle.mp4(download=true)}" class="btn btn-primary">
+            <span>Скачать MP4 (Часть 1)</span>
+          </a>
+        </div>
+        <div class="split-item" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <video autoplay loop muted playsinline class="split-media">
+            <source th:src="@{/media/files/video/Artwork_Right_Top.mp4}" type="video/mp4">
+          </video>
+          <a th:href="@{/media/files/video/Artwork_Right_Top.mp4(download=true)}" class="btn btn-primary">
+            <span>Скачать MP4 (Часть 2)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: GIF-панорама -->
+    <section class="media-section">
+      <h2 class="section-title">GIF-панорама</h2>
+      <div class="split-media-container">
+        <div class="split-item" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <img th:src="@{/media/files/images/Artwork_Middle-ezgif.com-video-to-gif-converter.gif}" alt="Middle GIF" class="split-media">
+          <a th:href="@{/media/files/images/Artwork_Middle-ezgif.com-video-to-gif-converter.gif(download=true)}" class="btn btn-primary">
+            <span>Скачать GIF (Часть 1)</span>
+          </a>
+        </div>
+        <div class="split-item" style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <img th:src="@{/media/files/images/Artwork_Right_Top-ezgif.com-video-to-gif-converter.gif}" alt="Right Top GIF" class="split-media">
+          <a th:href="@{/media/files/images/Artwork_Right_Top-ezgif.com-video-to-gif-converter.gif(download=true)}" class="btn btn-primary">
+            <span>Скачать GIF (Часть 2)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: Аудио плеер -->
+    <section class="media-section">
+      <h2 class="section-title">Аудио трек</h2>
+      <div style="background: rgba(10, 8, 7, 0.7); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;">
+        <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 5px;">Monsterblizu</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Формат: MP3 Stream</p>
+
+        <audio controls style="width: 100%; margin-bottom: 15px;">
+          <source th:src="@{/media/files/audio/42. Monsterblizu.mp3}" type="audio/mpeg">
+          Ваш браузер не поддерживает аудиоэлемент.
+        </audio>
+
+        <a th:href="@{/media/files/audio/42. Monsterblizu.mp3(download=true)}" class="btn btn-primary" style="display: inline-flex;">
+          <span>Скачать аудио (.mp3)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 4: Галерея статических артов -->
+    <section class="media-section">
+      <h2 class="section-title">Галерея артов</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card" style="display: flex; flex-direction: column; padding-bottom: 15px; gap: 12px;">
+          <img th:src="@{/media/files/images/c9df61261dcbdd5b873d1de0c6275333.jpg}" alt="Art 1" class="gallery-img">
+          <a th:href="@{/media/files/images/c9df61261dcbdd5b873d1de0c6275333.jpg(download=true)}" class="btn btn-primary" style="margin: 0 10px;">
+            <span>Скачать JPG</span>
+          </a>
+        </div>
+        <div class="gallery-card" style="display: flex; flex-direction: column; padding-bottom: 15px; gap: 12px;">
+          <img th:src="@{/media/files/images/Gemini_Generated_Image_2yvq2a2yvq2a2yvq.png}" alt="Art 2" class="gallery-img">
+          <a th:href="@{/media/files/images/Gemini_Generated_Image_2yvq2a2yvq2a2yvq.png(download=true)}" class="btn btn-primary" style="margin: 0 10px;">
+            <span>Скачать PNG</span>
+          </a>
+        </div>
+        <div class="gallery-card" style="display: flex; flex-direction: column; padding-bottom: 15px; gap: 12px;">
+          <img th:src="@{/media/files/images/photo_2026-06-20_20-03-18.jpg}" alt="Art 3" class="gallery-img">
+          <a th:href="@{/media/files/images/photo_2026-06-20_20-03-18.jpg(download=true)}" class="btn btn-primary" style="margin: 0 10px;">
+            <span>Скачать JPG</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>

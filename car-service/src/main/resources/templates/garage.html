@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Garage — Autumn Gothic</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<div class="light-source"></div>
+
+<div class="sphere sphere-1"></div>
+<div class="sphere sphere-2"></div>
+<div class="sphere sphere-3"></div>
+
+<div class="leaves-container">
+    <div class="leaf leaf-1"></div>
+    <div class="leaf leaf-2"></div>
+    <div class="leaf leaf-3"></div>
+    <div class="leaf leaf-4"></div>
+    <div class="leaf leaf-5"></div>
+    <div class="leaf leaf-6"></div>
+    <div class="leaf leaf-7"></div>
+    <div class="leaf leaf-8"></div>
+    <div class="leaf leaf-9"></div>
+    <div class="leaf leaf-10"></div>
+    <div class="leaf leaf-11"></div>
+    <div class="leaf leaf-12"></div>
+    <div class="leaf leaf-13"></div>
+    <div class="leaf leaf-14"></div>
+    <div class="leaf leaf-15"></div>
+    <div class="leaf leaf-16"></div>
+    <div class="leaf leaf-17"></div>
+    <div class="leaf leaf-18"></div>
+    <div class="leaf leaf-19"></div>
+    <div class="leaf leaf-20"></div>
+    <div class="leaf leaf-21"></div>
+    <div class="leaf leaf-22"></div>
+</div>
+
+<svg class="bg-lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <line x1="-100" y1="0" x2="1600" y2="900" stroke="url(#diagGrad1)" stroke-width="1.8" opacity="0.35"/>
+    <line x1="-100" y1="250" x2="1300" y2="1000" stroke="url(#diagGrad1)" stroke-width="1.2" opacity="0.25"/>
+    <line x1="300" y1="-100" x2="1700" y2="800" stroke="url(#diagGrad2)" stroke-width="2.2" opacity="0.3"/>
+    <line x1="-200" y1="450" x2="1100" y2="1100" stroke="url(#diagGrad2)" stroke-width="1.5" opacity="0.2"/>
+    <line x1="600" y1="-200" x2="1800" y2="650" stroke="url(#diagGrad1)" stroke-width="2" opacity="0.35"/>
+    <line x1="-100" y1="700" x2="900" y2="1200" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.18"/>
+    <path d="M-100,100 Q700,400 1600,800" fill="none" stroke="url(#diagGrad1)" stroke-width="1.5" opacity="0.25"/>
+    <path d="M200,-100 Q900,500 1700,1000" fill="none" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.2"/>
+
+    <defs>
+        <linearGradient id="diagGrad1" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fb923c" />
+            <stop offset="50%" stop-color="#c25927" />
+            <stop offset="100%" stop-color="#3d1e18" />
+        </linearGradient>
+        <linearGradient id="diagGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="60%" stop-color="#7c1d1d" />
+            <stop offset="100%" stop-color="#0b0a09" />
+        </linearGradient>
+    </defs>
+</svg>
+
+<div class="header-auth-corner">
+    <a th:href="@{/login}" class="btn-corner btn-corner-login">Войти</a>
+    <a th:href="@{/register}" class="btn-corner btn-corner-register">Регистрация</a>
+</div>
+
+<div class="container">
+    <header class="header">
+
+        <h1 class="autumn-title">
+            <span class="title-dark">Dark</span>
+            <span class="title-autumn">Autumn</span>
+            <span class="title-garage">Garage</span>
+        </h1>
+
+        <div style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+            Режим работы:
+            <span style="color: var(--autumn-pumpkin); font-weight: 600;"
+                  th:text="${garageStatus}">Статус загружается...</span>
+        </div>
+
+        <p style="color: var(--text-muted); margin-top: 5px;">
+            Самый свежий автомобиль в коллекции:
+            <strong style="color: var(--autumn-pumpkin);" th:text="${latestYear}">2023</strong> года
+        </p>
+
+        <p th:if="${freePlaces != null}" style="color: var(--text-muted); margin-top: 10px;">
+            Свободных мест в гараже: <strong style="color: var(--autumn-pumpkin);" th:text="${freePlaces}">0</strong>
+        </p>
+
+        <div style="margin-top: 20px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="/manage" class="btn btn-primary" style="box-shadow: 0 0 20px rgba(124, 29, 29, 0.6); border: 1px solid var(--autumn-pumpkin);">
+                <span>Управление автопарком</span>
+            </a>
+            <a href="/media" class="btn btn-primary" style="background: linear-gradient(135deg, var(--autumn-burgundy), var(--autumn-brown)); border: 1px solid var(--autumn-copper); box-shadow: 0 0 20px rgba(194, 89, 39, 0.4);">
+                <span>Медиа-галерея</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Поисковый блок -->
+    <section class="search-card">
+        <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+            <button type="button" class="search-tab"
+                    th:classappend="${activeSearchType == 'cars' or activeSearchType == null} ? 'active'"
+                    onclick="switchTab(this, 'cars')">Машины</button>
+            <button type="button" class="search-tab"
+                    th:classappend="${activeSearchType == 'users'} ? 'active'"
+                    onclick="switchTab(this, 'users')">Юзеры</button>
+            <button type="button" class="search-tab"
+                    th:classappend="${activeSearchType == 'services'} ? 'active'"
+                    onclick="switchTab(this, 'services')">Сервисы</button>
+        </div>
+
+        <form action="/dark-garage" method="get" class="search-form" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+
+            <input type="hidden" id="searchTypeInput" name="searchType" th:value="${activeSearchType != null ? activeSearchType : 'cars'}">
+
+            <div id="group-cars" class="filter-group" th:classappend="${activeSearchType == 'cars' or activeSearchType == null} ? 'active'">
+                <input type="text" name="brand" class="search-input" th:value="${selectedBrand}" placeholder="Марка (Peugeot, Changan...)" autocomplete="off" style="flex: 2;">
+                <input type="number" name="minYear" class="search-input" th:value="${selectedMinYear}" placeholder="От года (2022)" min="1990" max="2026" style="flex: 1; min-width: 130px;">
+            </div>
+
+            <div id="group-users" class="filter-group" th:classappend="${activeSearchType == 'users'} ? 'active'">
+                <input type="text" name="username" class="search-input" th:value="${selectedUsername}" placeholder="Логин пользователя..." autocomplete="off">
+            </div>
+
+            <div id="group-services" class="filter-group" th:classappend="${activeSearchType == 'services'} ? 'active'">
+                <input type="text" name="serviceName" class="search-input" th:value="${selectedServiceName}" placeholder="Название услуги (Замена масла...)" autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn btn-primary"><span>Искать</span></button>
+            <a href="/dark-garage" class="btn btn-reset">Сброс</a>
+        </form>
+    </section>
+
+    <div th:if="${errorMessage}" class="alert-error" th:text="${errorMessage}"></div>
+
+    <div th:if="${selectedBrandCount != null}"
+         style="margin: 15px 0; padding: 12px 20px; background: rgba(194, 89, 39, 0.15); border: 1px solid var(--autumn-pumpkin); border-radius: 8px; color: var(--text-light);">
+        Найдено автомобилей бренда <strong style="color: var(--autumn-pumpkin);" th:text="${selectedBrand}">Brand</strong>:
+        <strong style="color: var(--autumn-pumpkin);" th:text="${selectedBrandCount}">0</strong> шт.
+    </div>
+
+    <main class="cars-grid">
+        <div th:each="car : ${carsList}" class="car-card">
+            <div class="car-brand" th:text="${car.brand}">BRAND</div>
+            <div class="car-model" th:text="${car.model + ' (' + car.year + ')'}">MODEL</div>
+            <div class="car-style" th:text="${car.designStyle}">Design Description</div>
+
+            <div style="margin-top: 12px; font-size: 0.85rem; color: var(--autumn-copper);">
+                Владелец:
+                <span style="color: var(--text-primary);"
+                      th:text="${car.user != null ? car.user.login : 'Не назначен'}">Admin</span>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <a th:href="@{'/dark-garage/car/' + ${car.id}}"
+                   class="btn btn-reset"
+                   style="padding: 6px 14px; font-size: 0.8rem; width: 100%; justify-content: center;">
+                    Обслуживание и детали →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <section class="search-card" style="margin-bottom: 50px;">
+        <div th:if="${usersList != null and !usersList.isEmpty()}" style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <div th:each="user : ${usersList}"
+                 style="background: rgba(10, 8, 7, 0.7); border: 1px solid var(--border-color); border-radius: 18px; padding: 14px 22px; display: flex; align-items: center; gap: 12px; transition: transform 0.2s;"
+                 onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div>
+                    <div style="color: var(--text-primary); font-weight: 600;" th:text="${user.login}">UserLogin</div>
+                    <div style="color: var(--text-muted); font-size: 0.8rem;" th:text="${(user.cars != null ? user.cars.size() : 0) + ' авто в собственности'}">0 авто</div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${usersList == null or usersList.isEmpty()}" style="color: var(--text-muted); font-size: 0.95rem;">
+            Пользователи по вашему запросу не найдены.
+        </div>
+    </section>
+
+    <section class="search-card" style="margin-bottom: 50px;">
+        <div th:if="${allServices != null and !allServices.isEmpty()}" style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; color: var(--text-primary);">
+                <thead>
+                <tr style="border-bottom: 1px solid var(--border-color); color: var(--autumn-copper);">
+                    <th style="padding: 12px;">Услуга</th>
+                    <th style="padding: 12px;">Автомобиль</th>
+                    <th style="padding: 12px;">Время</th>
+                    <th style="padding: 12px;">Стоимость</th>
+                    <th style="padding: 12px;">Статус</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${allServices}" style="border-bottom: 1px solid rgba(194, 89, 39, 0.12);">
+                    <td style="padding: 12px; font-weight: 600;" th:text="${s.name}">Замена масла</td>
+                    <td style="padding: 12px; color: var(--text-muted);"
+                        th:text="${s.car != null ? s.car.brand + ' ' + s.car.model : 'Без авто'}">Peugeot 408</td>
+                    <td style="padding: 12px;" th:text="${s.executionTime + ' мин'}">45 мин</td>
+                    <td style="padding: 12px; color: var(--autumn-pumpkin); font-weight: 600;" th:text="${s.price + ' ₽'}">3500 ₽</td>
+                    <td style="padding: 12px;">
+                            <span style="padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; background: rgba(217, 119, 6, 0.18); border: 1px solid var(--autumn-pumpkin);"
+                                  th:text="${s.status}">PLANNED</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${allServices == null or allServices.isEmpty()}" style="color: var(--text-muted); font-size: 0.95rem;">
+            Сервисных записей нет.
+        </div>
+    </section>
+
+    <!-- Нижняя панель быстрой фильтрации -->
+    <footer class="brands-section">
+        <div class="brands-title">Маршруты /dark-garage/{brand}:</div>
+        <div class="brand-tags">
+            <a th:each="b : ${allBrands}"
+               th:href="@{'/dark-garage/' + ${b}}"
+               class="brand-tag"
+               th:text="${b}">Brand</a>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    function switchTab(buttonElement, type) {
+        document.getElementById('searchTypeInput').value = type;
+
+        document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.filter-group').forEach(g => g.classList.remove('active'));
+
+        buttonElement.classList.add('active');
+
+        const targetGroup = document.getElementById('group-' + type);
+        if (targetGroup) {
+            targetGroup.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>

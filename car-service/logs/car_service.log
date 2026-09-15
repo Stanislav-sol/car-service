@@ -1,0 +1,63 @@
+2026-09-06T13:52:26.372+03:00  INFO 7860 --- [car-service] [main] c.m.c.CarServiceApplicationTests         : Starting CarServiceApplicationTests using Java 17.0.12 with PID 7860 (started by User in D:\Nothing\car-service\car-service)
+2026-09-06T13:52:26.374+03:00 DEBUG 7860 --- [car-service] [main] c.m.c.CarServiceApplicationTests         : Running with Spring Boot v4.1.0, Spring v7.0.8
+2026-09-06T13:52:26.374+03:00  INFO 7860 --- [car-service] [main] c.m.c.CarServiceApplicationTests         : The following 1 profile is active: "dev"
+2026-09-06T13:52:26.855+03:00  INFO 7860 --- [car-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-06T13:52:26.910+03:00  INFO 7860 --- [car-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2026-09-06T13:52:27.307+03:00  INFO 7860 --- [car-service] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-06T13:52:27.362+03:00  INFO 7860 --- [car-service] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-09-06T13:52:27.793+03:00  INFO 7860 --- [car-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-06T13:52:27.814+03:00  INFO 7860 --- [car-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-06T13:52:27.919+03:00  INFO 7860 --- [car-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3a4cb483
+2026-09-06T13:52:27.920+03:00  INFO 7860 --- [car-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-06T13:52:27.967+03:00  INFO 7860 --- [car-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/car_service_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.6
+	Default catalog/schema: car_service_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-06T13:52:28.663+03:00  INFO 7860 --- [car-service] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-06T13:52:28.713+03:00  INFO 7860 --- [car-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-06T13:52:28.745+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.GarageHealthChecker      : Проверка пройдена: активный профиль [dev], лимит мест: 20
+2026-09-06T13:52:28.793+03:00  INFO 7860 --- [car-service] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-06T13:52:29.486+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : [BPP - BEFORE] Перехвачен бин 'carService'. Подготовка к вызову @PostConstruct...
+2026-09-06T13:52:29.495+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : Инициализация 'carService' завершена за '9' мс
+2026-09-06T13:52:29.495+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : [BPP - AFTER] Бин 'carService' успешно прошёл @PostConstruct!
+2026-09-06T13:52:29.532+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : [BPP - BEFORE] Перехвачен бин 'garageManagementService'. Подготовка к вызову @PostConstruct...
+2026-09-06T13:52:29.532+03:00  INFO 7860 --- [car-service] [main] c.m.c.service.GarageManagementService    : === [LIFECYCLE] Инициализация гаража: 'Dark Autumn Garage' ===
+2026-09-06T13:52:29.533+03:00  INFO 7860 --- [car-service] [main] c.m.c.service.GarageManagementService    : === [LIFECYCLE] Максимальная вместимость: 20 мест ===
+2026-09-06T13:52:29.643+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '36e69811-0ff6-4591-b431-32daff1db730', ID машины = 1
+2026-09-06T13:52:29.643+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = 'b8157553-49fd-43d2-8979-8b1ad56fe0db', ID машины = 2
+2026-09-06T13:52:29.643+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = 'a7b123c9-ce55-494c-90fc-473841d73613', ID машины = 3
+2026-09-06T13:52:29.643+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = 'f4980ee6-133c-4cb2-981e-52b9753e625c', ID машины = 4
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '3dc6ff57-8d3c-41cf-8f53-a508cb3a44a3', ID машины = 5
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '29887056-9cef-4023-bbf7-b8a64c8643b1', ID машины = 6
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = 'aa94199d-6d09-4d7b-ab4a-d500abdac6a9', ID машины = 7
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '4cfe4a00-9704-4286-848b-8e7a5397a83e', ID машины = 8
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '46ede45e-5cc5-4905-8679-01200b8a8200', ID машины = 9
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '8c879965-b534-44ca-913e-ca9bee0feca4', ID машины = 10
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '5effb3d2-d4ce-4f97-976d-d90b591cbadc', ID машины = 11
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.CarInspectionTask        : ID задачи = '169513a2-95d7-4038-a386-ee332d713085', ID машины = 12
+2026-09-06T13:52:29.644+03:00  INFO 7860 --- [car-service] [main] c.m.c.service.GarageManagementService    : === [LIFECYCLE] Автопарк успешно загружен из БД. Всего машин: 12 ===
+2026-09-06T13:52:29.645+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : Инициализация 'garageManagementService' завершена за '113' мс
+2026-09-06T13:52:29.645+03:00  INFO 7860 --- [car-service] [main] c.m.c.bpp.CustomGarageBeanPostProcessor  : [BPP - AFTER] Бин 'garageManagementService' успешно прошёл @PostConstruct!
+2026-09-06T13:52:29.695+03:00  WARN 7860 --- [car-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-06T13:52:29.811+03:00  WARN 7860 --- [car-service] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b681a5ef-7c0c-44d1-97ff-9aa387da5a7c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-06T13:52:29.824+03:00  INFO 7860 --- [car-service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-06T13:52:30.320+03:00  INFO 7860 --- [car-service] [main] c.m.c.CarServiceApplicationTests         : Started CarServiceApplicationTests in 4.205 seconds (process running for 4.966)
+2026-09-06T13:52:30.326+03:00  INFO 7860 --- [car-service] [main] c.m.c.component.DevDataInitializer       : Среда разработки готова. Инициализация тестового профиля...
+2026-09-06T13:52:32.543+03:00  INFO 7860 --- [car-service] [task-1] c.m.c.component.GarageAsyncMethods       : Имитируем бурную деятельность с потоком task-1
+2026-09-06T13:52:32.545+03:00  INFO 7860 --- [car-service] [SpringApplicationShutdownHook] c.m.c.component.GarageHealthChecker      : Остановка компонентов проверки гаража
+2026-09-06T13:52:32.545+03:00  INFO 7860 --- [car-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-06T13:52:32.550+03:00  INFO 7860 --- [car-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-06T13:52:32.553+03:00  INFO 7860 --- [car-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

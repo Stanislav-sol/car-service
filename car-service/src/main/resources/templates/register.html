@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Garage — Регистрация</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+
+<div class="light-source"></div>
+
+<div class="sphere sphere-1"></div>
+<div class="sphere sphere-2"></div>
+<div class="sphere sphere-3"></div>
+
+<div class="leaves-container">
+    <div class="leaf leaf-1"></div><div class="leaf leaf-2"></div><div class="leaf leaf-3"></div>
+    <div class="leaf leaf-4"></div><div class="leaf leaf-5"></div><div class="leaf leaf-6"></div>
+    <div class="leaf leaf-7"></div><div class="leaf leaf-8"></div><div class="leaf leaf-9"></div>
+    <div class="leaf leaf-10"></div><div class="leaf leaf-11"></div><div class="leaf leaf-12"></div>
+    <div class="leaf leaf-13"></div><div class="leaf leaf-14"></div><div class="leaf leaf-15"></div>
+    <div class="leaf leaf-16"></div><div class="leaf leaf-17"></div><div class="leaf leaf-18"></div>
+    <div class="leaf leaf-19"></div><div class="leaf leaf-20"></div><div class="leaf leaf-21"></div>
+    <div class="leaf leaf-22"></div>
+</div>
+
+<svg class="bg-lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <line x1="-100" y1="0" x2="1600" y2="900" stroke="url(#diagGrad1)" stroke-width="1.8" opacity="0.35"/>
+    <line x1="-100" y1="250" x2="1300" y2="1000" stroke="url(#diagGrad1)" stroke-width="1.2" opacity="0.25"/>
+    <line x1="300" y1="-100" x2="1700" y2="800" stroke="url(#diagGrad2)" stroke-width="2.2" opacity="0.3"/>
+    <line x1="-200" y1="450" x2="1100" y2="1100" stroke="url(#diagGrad2)" stroke-width="1.5" opacity="0.2"/>
+    <line x1="600" y1="-200" x2="1800" y2="650" stroke="url(#diagGrad1)" stroke-width="2" opacity="0.35"/>
+    <line x1="-100" y1="700" x2="900" y2="1200" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.18"/>
+    <path d="M-100,100 Q700,400 1600,800" fill="none" stroke="url(#diagGrad1)" stroke-width="1.5" opacity="0.25"/>
+    <path d="M200,-100 Q900,500 1700,1000" fill="none" stroke="url(#diagGrad2)" stroke-width="1" opacity="0.2"/>
+
+    <defs>
+        <linearGradient id="diagGrad1" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fb923c" />
+            <stop offset="50%" stop-color="#c25927" />
+            <stop offset="100%" stop-color="#3d1e18" />
+        </linearGradient>
+        <linearGradient id="diagGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="60%" stop-color="#7c1d1d" />
+            <stop offset="100%" stop-color="#0b0a09" />
+        </linearGradient>
+    </defs>
+</svg>
+
+<div class="auth-card">
+    <h2 class="auth-title">Регистрация</h2>
+
+    <div th:if="${errorMessage}" class="alert-error" th:text="${errorMessage}"></div>
+
+    <form th:action="@{/register}" th:object="${registerDto}" method="post">
+        <div class="form-group">
+            <label for="login">Логин</label>
+            <input type="text" id="login" th:field="*{login}" class="form-control" autocomplete="off">
+            <div class="error-msg" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" autocomplete="off">
+            <div class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control">
+            <div class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+            <span>Создать аккаунт</span>
+        </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 22px; font-size: 0.88rem; color: var(--text-muted);">
+        Уже зарегистрированы? <a th:href="@{/login}" style="color: var(--autumn-pumpkin); text-decoration: none; font-weight: 600;">Войти</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap');
+
+:root {
+    --bg-dark: #0a0908;
+    --autumn-copper: #c25927;
+    --autumn-pumpkin: #d97706;
+    --autumn-burgundy: #7c1d1d;
+    --autumn-moss: #2e3e2f;
+    --autumn-amber: #b45309;
+    --autumn-brown: #5c2418;
+
+    --card-bg: rgba(20, 17, 15, 0.75);
+    --border-color: rgba(194, 89, 39, 0.22);
+    --border-hover: rgba(217, 119, 6, 0.55);
+
+    --text-primary: #f3efe6;
+    --text-muted: #a3998e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    padding: 60px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ИСТОЧНИК СВЕТА: Перенесен в нижний левый угол */
+.light-source {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+            45deg,
+            rgba(251, 146, 60, 0.20) 0%,
+            rgba(217, 119, 6, 0.08) 35%,
+            rgba(124, 29, 29, 0.03) 70%,
+            transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 3D СФЕРЫ: Изменены размеры и позиции */
+
+/* Крупная медная сфера слева внизу */
+.sphere-1 {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    width: 280px;
+    height: 280px;
+    bottom: 5%;
+    left: 2%;
+    background: radial-gradient(circle at 68% 28%, #c85a28 0%, #6e240a 52%, #1a0601 95%);
+    box-shadow:
+            inset 20px -20px 40px rgba(0, 0, 0, 0.9),
+            -25px 30px 55px rgba(0, 0, 0, 0.85),
+            0 0 30px rgba(200, 90, 40, 0.12);
+    animation: float3D 16s infinite ease-in-out alternate;
+}
+
+/* Компактная бордовая сфера справа вверху */
+.sphere-2 {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    width: 130px;
+    height: 130px;
+    top: 10%;
+    right: 8%;
+    background: radial-gradient(circle at 70% 25%, #8b1e1e 0%, #420a0a 55%, #0f0202 95%);
+    box-shadow:
+            inset 12px -12px 25px rgba(0, 0, 0, 0.95),
+            -15px 18px 35px rgba(0, 0, 0, 0.9),
+            0 0 20px rgba(139, 30, 30, 0.18);
+    animation: float3D 12s infinite ease-in-out alternate;
+    animation-delay: -5s;
+}
+
+/* Средняя янтарно-зеленая сфера по правому центру */
+.sphere-3 {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    width: 190px;
+    height: 190px;
+    top: 42%;
+    right: 3%;
+    background: radial-gradient(circle at 65% 30%, #324a33 0%, #121e13 60%, #030804 95%);
+    box-shadow:
+            inset 15px -15px 30px rgba(0, 0, 0, 0.85),
+            -18px 20px 40px rgba(0, 0, 0, 0.75);
+    animation: float3D 15s infinite ease-in-out alternate;
+    animation-delay: -9s;
+}
+
+@keyframes float3D {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) scale(1.04) rotate(4deg); }
+    100% { transform: translateY(18px) scale(0.96) rotate(-4deg); }
+}
+
+/* ДИАГОНАЛЬНЫЕ ЛИНИИ ФОНА */
+.bg-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    animation: linesSway 16s infinite ease-in-out alternate;
+}
+
+@keyframes linesSway {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-8px) rotate(0.6deg) scale(1.01); }
+    100% { transform: translateY(6px) rotate(-0.6deg) scale(0.99); }
+}
+
+/* НЕПРЕРЫВНЫЙ ЛИСТОПАД */
+.leaves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    top: -40px;
+    border-radius: 0 85% 0 85%;
+    opacity: 0.8;
+    animation: leafFall linear infinite, leafSway ease-in-out infinite alternate;
+}
+
+.leaf-1  { left: 3%;  width: 14px; height: 14px; background: #ea580c; animation-duration: 11s, 4s; animation-delay: -2s; }
+.leaf-2  { left: 8%;  width: 20px; height: 20px; background: #c25927; animation-duration: 15s, 5s; animation-delay: -8s; }
+.leaf-3  { left: 14%; width: 11px; height: 11px; background: #8b2611; animation-duration: 9s,  3s; animation-delay: -4s; }
+.leaf-4  { left: 19%; width: 17px; height: 17px; background: #b45309; animation-duration: 13s, 4.5s; animation-delay: -11s; }
+.leaf-5  { left: 25%; width: 15px; height: 15px; background: #f97316; animation-duration: 10s, 3.5s; animation-delay: -1s; }
+.leaf-6  { left: 30%; width: 22px; height: 22px; background: #5c2418; animation-duration: 16s, 6s; animation-delay: -6s; }
+.leaf-7  { left: 36%; width: 12px; height: 12px; background: #c25927; animation-duration: 8.5s, 3s; animation-delay: -3s; }
+.leaf-8  { left: 41%; width: 18px; height: 18px; background: #7c1d1d; animation-duration: 12s, 4s; animation-delay: -9s; }
+.leaf-9  { left: 47%; width: 16px; height: 16px; background: #d97706; animation-duration: 14s, 5s; animation-delay: -13s; }
+.leaf-10 { left: 52%; width: 13px; height: 13px; background: #5c2418; animation-duration: 10s, 3.8s; animation-delay: -5s; }
+.leaf-11 { left: 58%; width: 19px; height: 19px; background: #b45309; animation-duration: 12.5s, 4.2s; animation-delay: -7s; }
+.leaf-12 { left: 63%; width: 14px; height: 14px; background: #8b2611; animation-duration: 11s, 3.2s; animation-delay: -10s; }
+.leaf-13 { left: 69%; width: 21px; height: 21px; background: #ea580c; animation-duration: 15s, 5.5s; animation-delay: -2.5s; }
+.leaf-14 { left: 74%; width: 12px; height: 12px; background: #c25927; animation-duration: 9.5s, 3.7s; animation-delay: -8.5s; }
+.leaf-15 { left: 80%; width: 17px; height: 17px; background: #f97316; animation-duration: 13s, 4.8s; animation-delay: -4.5s; }
+.leaf-16 { left: 85%; width: 23px; height: 23px; background: #5c2418; animation-duration: 17s, 6.2s; animation-delay: -12s; }
+.leaf-17 { left: 90%; width: 11px; height: 11px; background: #7c1d1d; animation-duration: 8s, 2.9s; animation-delay: -1.8s; }
+.leaf-18 { left: 95%; width: 16px; height: 16px; background: #d97706; animation-duration: 11.5s, 4.1s; animation-delay: -6.8s; }
+.leaf-19 { left: 22%; width: 10px; height: 10px; background: #f97316; animation-duration: 9s, 3.2s; animation-delay: -7.2s; }
+.leaf-20 { left: 45%; width: 20px; height: 20px; background: #8b2611; animation-duration: 14.5s, 5.1s; animation-delay: -10.2s; }
+.leaf-21 { left: 67%; width: 13px; height: 13px; background: #ea580c; animation-duration: 10.5s, 3.9s; animation-delay: -0.5s; }
+.leaf-22 { left: 88%; width: 18px; height: 18px; background: #b45309; animation-duration: 12.8s, 4.4s; animation-delay: -14.2s; }
+
+@keyframes leafFall {
+    0% { top: -50px; opacity: 0; }
+    8% { opacity: 0.85; }
+    92% { opacity: 0.85; }
+    100% { top: 105vh; opacity: 0; }
+}
+
+@keyframes leafSway {
+    0% { transform: translateX(0) rotate(0deg) rotateY(0deg); }
+    50% { transform: translateX(40px) rotate(130deg) rotateY(180deg); }
+    100% { transform: translateX(-30px) rotate(260deg) rotateY(360deg); }
+}
+
+/* КОНТЕЙНЕР */
+.container {
+    max-width: 920px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ЗАГОЛОВОК */
+.header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.autumn-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: inline-flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.title-dark {
+    color: var(--autumn-pumpkin);
+    text-shadow: 0 0 20px rgba(217, 119, 6, 0.45);
+}
+
+.title-autumn {
+    background: linear-gradient(135deg, #fb923c 0%, #c25927 50%, #7c1d1d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 15px rgba(194, 89, 39, 0.35));
+}
+
+.title-garage {
+    color: #e2d5c3;
+    text-shadow: 0 4px 15px rgba(226, 213, 195, 0.2);
+}
+
+/* КНОПКИ */
+.btn {
+    padding: 14px 28px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--autumn-copper), var(--autumn-burgundy));
+    color: #f3efe6;
+    box-shadow: 0 8px 20px rgba(124, 29, 29, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(194, 89, 39, 0.5);
+    background: linear-gradient(135deg, var(--autumn-pumpkin), var(--autumn-copper));
+}
+
+.btn-reset {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.btn-reset:hover {
+    background: rgba(194, 89, 39, 0.15);
+    color: var(--text-primary);
+}
+
+/* МЕДИА-СЕТКА И АСИММЕТРИЧНЫЕ КАРТОЧКИ */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 35px;
+    margin-bottom: 40px;
+}
+
+.media-card-left {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-color);
+    border-radius: 45px 12px 25px 8px;
+    padding: 30px;
+    box-shadow: -10px 18px 40px rgba(0, 0, 0, 0.75);
+    transition: all 0.4s ease;
+}
+
+.media-card-right {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px 40px 8px 30px;
+    padding: 30px;
+    box-shadow: 10px 18px 40px rgba(0, 0, 0, 0.75);
+    transition: all 0.4s ease;
+}
+
+.media-card-left:hover, .media-card-right:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(194, 89, 39, 0.25), -10px 20px 45px rgba(0, 0, 0, 0.85);
+}
+
+.media-preview-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 30px 8px 18px 6px;
+    border: 1px solid rgba(194, 89, 39, 0.3);
+    margin-bottom: 20px;
+}
+/* Макет страницы */
+.media-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.media-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    color: var(--autumn-pumpkin);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Контейнер для двухчастевых медиа (1+3 и 2+4) */
+.split-media-container {
+    display: flex;
+    flex-direction: row;
+    gap: 6px; /* Небольшое расстояние между левой и правой частью */
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(194, 89, 39, 0.15);
+}
+
+.split-item {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.split-media {
+    max-height: 480px;
+    width: auto;
+    display: block;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+/* Галерея остальных картинок */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    filter: invert(0.9) sepia(0.8) hue-rotate(-30deg) saturate(1.8);
+}
