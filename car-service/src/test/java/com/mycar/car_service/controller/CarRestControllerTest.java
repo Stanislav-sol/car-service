@@ -54,7 +54,7 @@ public class CarRestControllerTest {
                 "При запросе несуществующей машины должно выбрасываться исключение"
         );
 
-        assertEquals("Машина с id 999 не найдена!", exception.getMessage());
+        assertEquals("Машина с id 999 не найдена", exception.getMessage());
         verify(carService, times(1)).getCarById(999L);
     }
 }
